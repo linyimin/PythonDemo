@@ -1,0 +1,47 @@
+一、 封装接口：
+Swagger接口封装工具swagger-codegen-cli.jar 和 Java运行环境配置
+复制接口网址在浏览器中打开，全选校验工具将Json格式化
+打开Swagger.Json全选，替换刚才格式化的Json接口文件
+
+        存在泛型时会出现以下3种情况，需要相应替换：
+将"required" : false替换为"required" : true
+将<< 和 >>替换为空（什么不输入）
+将 ,s 替换为 s（去掉逗号） 5，6是为了将后面字符和前面字符连在一起
+
+Shift+右键打开cmd，复制cmd.txt中路径，要和本机Swagger所在路径一致，回车生成
+本地删除项目目录下webservice下api和model
+cpprest_client文件夹（初始为空）下api 和 model 复制到webservice目录下
+打开Svn 提交修改接口代码：第一次生成的要手动改api目录下的文件代码：
+
+字符串使用 ModelBase:toJson 替换掉 item:toJson
+数组使用 ParameterToArrayString 替换掉 parameterToString
+jsonArray.push_back( item.get() ? item->toJson() : web::json::value::null() );
+jsonArray.push_back(item.empty() ? web::json::value::null() : ModelBase::toJson(item));
+
+11. 替换好了不想替换了：webservice--commit 全选--SVN--Revert 这样就回到替换前的状态。
+12. 到mamagers中修改写接口或修改接口。
+
+java -jar swagger-codegen-cli.jar generate -i E:\Swagger接口封装工具\swagger.json -o E:\Swagger接口封装工具\cpprest-clientnt -l cpprest
+
+-i 后的路径为json文件的路径
+-o 后的路径为生成的接口文件路径
+-l cpprest 表示用cpprest生成C++ 代码
+
+每次封装接口完成之后，将api文件夹下面的文件拷贝到对应的api文件夹下，model文件夹下的文件拷贝到对应的model文件夹下
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
