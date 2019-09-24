@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<baspools>
+	<bas>
+		<basprovider>0</basprovider>
+		<portal_version>1</portal_version>
+		<timeout>111</timeout>
+		<retry>111</retry>
+		<auth_type>111</auth_type>
+	</bas>
+	<bas>
+		<basprovider>0</basprovider>
+		<portal_version>1</portal_version>
+		<timeout>5000</timeout>
+		<retry>3</retry>
+		<auth_type>0</auth_type>
+	</bas>
+</baspools>
